@@ -21,7 +21,7 @@ public class Database {
 	    medicineList.add(new Medicine("비타민C", 9000, 50));
 	}
 
-	public static ArrayList<Medicine> getMedicine() {
+	ArrayList<Medicine> getMedicine() {
 		return medicineList; 
 	}
 }

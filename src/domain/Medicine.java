@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Medicine {
 	private String name;	
-	private int quantity;
+	private int price;
 	private int amount;
 	
 }
