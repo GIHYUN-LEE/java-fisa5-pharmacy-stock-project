@@ -5,6 +5,10 @@ import java.util.HashMap;
 import domain.Medicine;
 
 public class OutputView {
+<<<<<<< HEAD
+	
+=======
+>>>>>>> aaa4a7ec05ac7944f828a6fd8f97fff71906f26c
 	public static void printInsertSuccess(Medicine med) {
 		System.out.println("약 등록 완료: " + med.getName() + " " + med.getAmount() +"개 " + med.getPrice() + "원");
 	}
