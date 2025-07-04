@@ -21,4 +21,8 @@ public class Model {
 		return true;
 	}
 	
+	public static Model getModel() {
+		return model;
+	}
+	
 }
