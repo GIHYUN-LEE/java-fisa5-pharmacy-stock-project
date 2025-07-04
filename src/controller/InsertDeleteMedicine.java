@@ -3,9 +3,9 @@ package controller;
 import java.util.HashMap;
 
 import domain.Medicine;
-import model.InsertDeleteModel;
 import model.Model;
 import view.InsertDeleteView;
+import view.OutputView;
 
 public class InsertDeleteMedicine {
 	
@@ -13,7 +13,7 @@ public class InsertDeleteMedicine {
 		Medicine medicine = InsertDeleteView.inputMedicineInfo();
 		try {
 			if(model.isExist(medicine.getName())) {
-				throw Exception("존재하는 약 입니다.");
+				throw new Exception("존재하는 약 입니다.");
 			} 
 			model.insertMedicine(medicine);
 			OutputView.printInsertSuccess(medicine);

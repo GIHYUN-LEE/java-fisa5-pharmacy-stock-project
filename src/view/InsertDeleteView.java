@@ -1,8 +1,6 @@
 package view;
 
 import domain.Medicine;
-import model.InsertDeleteModel;
-import model.Model;
 
 public class InsertDeleteView {
 	
