@@ -13,10 +13,10 @@ public class Model {
 		return db.getMedicine();
 	}
 	
-	public boolean isExist(String medicineName) throws Exception {
+	public boolean isExist(String medicineName){
 		HashMap<String, Medicine> medicineList = model.getMedicineList();
 		if(!medicineList.containsKey(medicineName)) {
-			throw new Exception("존재하지 않는 약입니다.");
+			return false;
 		} 
 		return true;
 	}
