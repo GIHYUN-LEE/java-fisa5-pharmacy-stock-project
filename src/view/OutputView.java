@@ -5,16 +5,16 @@ import java.util.HashMap;
 import domain.Medicine;
 
 public class OutputView {
-<<<<<<< HEAD
-	
-=======
->>>>>>> aaa4a7ec05ac7944f828a6fd8f97fff71906f26c
 	public static void printInsertSuccess(Medicine med) {
 		System.out.println("약 등록 완료: " + med.getName() + " " + med.getAmount() +"개 " + med.getPrice() + "원");
 	}
 	
 	public static void printUpdateSuccess(Medicine med) {
 		System.out.println("약 업데이트 완료: " + med.getName() +" " + med.getAmount()+"개 " + med.getPrice() + "원");
+	}
+	
+	public static void printEditSuccess(Medicine med) {
+		System.out.println("약 수정 완료: " + med.getName() +" " + med.getAmount()+"개 " + med.getPrice() + "원");
 	}
 	
 	public static void printDeleteSuccess(Medicine med) {
