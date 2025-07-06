@@ -13,8 +13,8 @@ public class OutputView {
 		System.out.println("약 업데이트 완료: " + med.getName() +" " + med.getAmount()+"개 " + med.getPrice() + "원");
 	}
 	
-	public static void printDeleteSuccess(Medicine med) {
-		System.out.println(med.getName() +" 삭제 완료");
+	public static void printDeleteSuccess(String name) {
+		System.out.println(name +" 삭제 완료");
 	}
 	
 	public static void errorPrint(String errorMessage) {
