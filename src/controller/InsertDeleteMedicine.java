@@ -1,7 +1,5 @@
 package controller;
 
-import java.util.HashMap;
-
 import domain.Medicine;
 import model.Model;
 import view.InsertDeleteView;
@@ -24,7 +22,7 @@ public class InsertDeleteMedicine {
 		
 	}
 	
-	public static void deleteMedicine(Model model) {
+	public void deleteMedicine(Model model) {
 		String name = InsertDeleteView.inputDeleteMedicineName();
 		try {
 			if(!model.isExist(name)) {
