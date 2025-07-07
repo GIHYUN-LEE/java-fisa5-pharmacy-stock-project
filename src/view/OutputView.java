@@ -7,16 +7,17 @@ import domain.Medicine;
 public class OutputView {
 	
 	public static void printInsertSuccess(Medicine med) {
-		System.out.println("약 등록 완료: " + med.getName() + " " + med.getAmount() +"개 " + med.getPrice() + "원");
+	    System.out.println("약 등록 완료: " + med.getName() + " " + med.getPrice() + "원 " + med.getAmount() + "개");
 	}
-	
+
 	public static void printUpdateSuccess(Medicine med) {
-		System.out.println("약 업데이트 완료: " + med.getName() +" " + med.getAmount()+"개 " + med.getPrice() + "원");
+	    System.out.println("약 업데이트 완료: " + med.getName() + " " + med.getPrice() + "원 " + med.getAmount() + "개");
 	}
-	
+
 	public static void printEditSuccess(Medicine med) {
-		System.out.println("약 수정 완료: " + med.getName() +" " + med.getAmount()+"개 " + med.getPrice() + "원");
+	    System.out.println("약 수정 완료: " + med.getName() + " " + med.getPrice() + "원 " + med.getAmount() + "개");
 	}
+
 
 	public static void printDeleteSuccess(String name) {
 		System.out.println(name +" 삭제 완료");
