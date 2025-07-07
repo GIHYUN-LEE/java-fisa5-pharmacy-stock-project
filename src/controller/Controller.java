@@ -11,7 +11,9 @@ public class Controller {
 
 	public static void main(String[] args) throws Exception {
 		Scanner scan = new Scanner(System.in);
-		Model model = new Model();
+		Model model = Model.getModel();
+		InsertDeleteMedicine insertDelete = new InsertDeleteMedicine();
+
 
 		while (true) {
 			String name = "";
@@ -19,11 +21,12 @@ public class Controller {
 			int option = scan.nextInt();
 
 			switch (option) {
-			case 1:
-				OutputView.printAllMedicines(model.getMedicineList());
+			case 1: //삽입
+				insertDelete.insertMedicine(model);
 				break;
-			case 2:
-				name = InputView.inputMedicineName();
+			case 2: //삭제
+				insertDelete.deleteMedicine(model);
+				break;
 			case 3:
 				name = InputView.inputMedicineName();
 				int quantity = InputView.inputMedicineAmount();
