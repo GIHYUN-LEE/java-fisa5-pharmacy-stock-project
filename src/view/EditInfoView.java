@@ -1,25 +1,32 @@
 package view;
 
-import domain.Medicine;
 import java.util.Scanner;
 
 public class EditInfoView {
 
-    // 약 정보 입력 (수정 대상)
+    private static final Scanner sc = new Scanner(System.in);
+
+    /** 수정 대상 약 이름 */
     public static String inputTargetMedicineName() {
         System.out.println("수정할 약품 정보를 입력하세요.");
-        return InputView.inputMedicineName();
+        return InputView.inputMedicineName();   // 기존 메서드 재사용
     }
 
-    // 새로운 이름 입력
+    /** 새 이름(엔터=유지) */
     public static String inputNewMedicineName() {
         System.out.print("새로운 약 이름을 입력하세요 (변경하지 않으려면 엔터): ");
-        return new Scanner(System.in).nextLine();
+        return sc.nextLine();                  // 엔터 그대로 반환
     }
 
-    // 새로운 가격 입력
+    /** 새 가격(0=유지) */
     public static int inputNewMedicinePrice() {
-        System.out.print("새로운 약 가격을 입력하세요 (변경하지 않으려면 0 입력): ");
-        return Integer.parseInt(new Scanner(System.in).nextLine());
+        System.out.print("새로운 약 가격을 입력하세요 (0 입력 시 유지): ");
+        return Integer.parseInt(sc.nextLine());   // 빈 입력 방지 → 숫자만 허용
+    }
+
+    /** 새 수량(0=유지) */
+    public static int inputNewMedicineAmount() {
+        System.out.print("새로운 약 수량을 입력하세요 (0 입력 시 유지): ");
+        return Integer.parseInt(sc.nextLine());
     }
 }

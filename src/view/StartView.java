@@ -3,6 +3,7 @@ package view;
 public class StartView {
 
 	public static void startView() {
+		
 		System.out.println("===== 창고형 약국 시스템 =====");
         System.out.println("1. 약 삽입");
         System.out.println("2. 약 삭제");
