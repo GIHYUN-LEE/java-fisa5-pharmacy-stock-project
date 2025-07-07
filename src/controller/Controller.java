@@ -23,7 +23,8 @@ public class Controller {
 		Scanner scan = new Scanner(System.in);
 		Model model = Model.getModel();
 		InsertDeleteMedicine insertDelete = new InsertDeleteMedicine();
-
+		UpdateMedicineStock updateMedicine = new UpdateMedicineStock();
+		
 		while (true) {
 			String name = "";
 			StartView.startView();
@@ -38,8 +39,7 @@ public class Controller {
 				insertDelete.deleteMedicine(model);
 				break;
 			case 3:
-				
-				//updateMedicine(model);
+				updateMedicine.updateMedicine(model);
 				break;
 			case 4:return;
 			case 5:search.showMedicine(); 

@@ -37,5 +37,6 @@ public class Model {
 		HashMap<String, Medicine> medicineList = model.getMedicineList();
 		medicineList.remove(name);
 	}
-
+	
+	
 }

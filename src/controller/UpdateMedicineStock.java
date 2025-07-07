@@ -27,7 +27,13 @@ public class UpdateMedicineStock {
             }
 
             med.setAmount(newStock);
+            if(newStock==0) {
+            	model.deleteMedicine(name);
+            	OutputView.printDeleteSuccess(name);
+            	return;
+            }
             OutputView.printUpdateSuccess(med);
+           
 
         } catch (IllegalArgumentException | IllegalStateException e) {
             OutputView.errorPrint(e.getMessage());
