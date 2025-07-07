@@ -6,6 +6,7 @@ import domain.Medicine;
 import model.Model;
 import view.InputView;
 import view.OutputView;
+import view.SearchView;
 import view.StartView;
 
 public class Controller {
@@ -17,11 +18,11 @@ public class Controller {
     
 	}
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception{
+		SearchView search=new SearchView();			
 		Scanner scan = new Scanner(System.in);
 		Model model = Model.getModel();
 		InsertDeleteMedicine insertDelete = new InsertDeleteMedicine();
-		SearchMedicine search=new SearchMedicine();	
 
 		while (true) {
 			String name = "";
@@ -29,6 +30,7 @@ public class Controller {
 			int option = scan.nextInt();
 
 			switch (option) {
+			
 			case 1: //삽입
 				insertDelete.insertMedicine(model);
 				break;
@@ -36,19 +38,18 @@ public class Controller {
 				insertDelete.deleteMedicine(model);
 				break;
 			case 3:
-				name = InputView.inputMedicineName();
-				int quantity = InputView.inputMedicineAmount();
-				UpdateMedicineStock.updateMedicine(name, quantity);
+				
+				//updateMedicine(model);
 				break;
-			case 4:
-				return;
-			case 5:search.showMedicine();   //case5는 조회용이라서 기존 line33~36을 case4로 옮겼어요
-                   break;
+			case 4:return;
+			case 5:search.showMedicine(); 
+                   break;	
 			case 0:
 				System.out.println("프로그램 종료합니다");
 				return;
 			default:
 				System.out.println("잘못된 선택입니다. 다시 선택해 주세요.");
+
 			}
 		}
 	}

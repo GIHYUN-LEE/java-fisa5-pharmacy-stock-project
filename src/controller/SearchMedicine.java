@@ -3,6 +3,7 @@ import domain.Medicine;
 import view.InputView;
 
 public class SearchMedicine {
+	Controller control=new Controller();
 	
 	public void searchMedicine() {
 		Controller control = new Controller();
@@ -15,5 +16,7 @@ public class SearchMedicine {
 			System.out.println("리스트에 없는 약 이름 입니다.");
 		}
 	}
+
 }
+
 
