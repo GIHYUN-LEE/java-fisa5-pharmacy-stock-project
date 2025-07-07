@@ -9,7 +9,7 @@ import view.OutputView;
 
 public class UpdateMedicineStock {
 
-    public static void updateMedicine(Model model) {
+    public void updateMedicine(Model model) {
         try {
             String name = InputView.inputMedicineName();
             int quantity = InputView.inputMedicineAmount();
