@@ -5,14 +5,16 @@ import domain.Medicine;
 
 public class Model {
     
-    private Database db = new Database();
+    private static Database db = new Database();
     private static Model model = new Model();
-
-    public HashMap<String, Medicine> getMedicineList() {
+    
+    private Model() {}
+    
+    public static HashMap<String, Medicine> getMedicineList() {
         return db.getMedicine();
     }
 
-    public boolean isExist(String medicineName) {
+    public static boolean isExist(String medicineName) {
         HashMap<String, Medicine> medicineList = model.getMedicineList();
         return medicineList.containsKey(medicineName);
     }
@@ -37,7 +39,7 @@ public class Model {
     }
 
     // 약 정보 수정
-    public void editMedicine(String oldName, Medicine newMed) throws Exception {
+    public static void editMedicine(String oldName, Medicine newMed) throws Exception {
         HashMap<String, Medicine> medicineList = model.getMedicineList();
 
         // 존재 여부 확인

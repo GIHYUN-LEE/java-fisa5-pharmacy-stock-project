@@ -9,16 +9,16 @@ import view.OutputView;
 
 public class UpdateMedicineStock {
 
-    public void updateMedicine(Model model) {
+    public void updateMedicine() {
         try {
             String name = InputView.inputMedicineName();
             int quantity = InputView.inputMedicineAmount();
 
-            if (!model.isExist(name)) {
+            if (!Model.isExist(name)) {
                 throw new IllegalArgumentException("약이 존재하지 않습니다.");
             }
 
-            HashMap<String, Medicine> list = model.getMedicineList();
+            HashMap<String, Medicine> list = Model.getMedicineList();
             Medicine med = list.get(name);
             int newStock = med.getAmount() + quantity;
 
@@ -28,7 +28,7 @@ public class UpdateMedicineStock {
 
             med.setAmount(newStock);
             if(newStock==0) {
-            	model.deleteMedicine(name);
+            	Model.deleteMedicine(name);
             	OutputView.printDeleteSuccess(name);
             	return;
             }

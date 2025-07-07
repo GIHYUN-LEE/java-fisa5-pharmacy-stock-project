@@ -7,28 +7,29 @@ import view.OutputView;
 
 public class InsertDeleteMedicine {
 	
-	public void insertMedicine(Model model) {
+	public void insertMedicine() {
 		Medicine medicine = InsertDeleteView.inputInsertMedicineInfo();
 		try {
-			if(model.isExist(medicine.getName())) {
+			if(Model.isExist(medicine.getName())) {
 				throw new Exception("존재하는 약 입니다.");
 			} 
-			model.insertMedicine(medicine);
+			Model.insertMedicine(medicine);
 			OutputView.printInsertSuccess(medicine);
 			
 		}catch(Exception e) {
 			OutputView.errorPrint(e.getMessage());
+			e.printStackTrace();
 		}
 		
 	}
 	
-	public void deleteMedicine(Model model) {
+	public void deleteMedicine() {
 		String name = InsertDeleteView.inputDeleteMedicineName();
 		try {
-			if(!model.isExist(name)) {
+			if(!Model.isExist(name)) {
 				throw new Exception("존재하지 않는 약 입니다.");
 			} 
-			model.deleteMedicine(name);
+			Model.deleteMedicine(name);
 			OutputView.printDeleteSuccess(name);
 		}catch (Exception e) {
 			OutputView.errorPrint(e.getMessage());

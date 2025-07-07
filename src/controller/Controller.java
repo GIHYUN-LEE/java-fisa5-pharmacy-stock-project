@@ -15,7 +15,7 @@ public class Controller {
     /* ---------------------------------
        필드 및 헬퍼 메서드
     --------------------------------- */
-    Model model = new Model();
+    private static Model model =  Model.getModel()    ;
 
     /** 다른 클래스에서 Medicine 목록을 얻고 싶을 때 사용 */
     public HashMap<String, Medicine> getMedicineList() {
@@ -29,7 +29,6 @@ public class Controller {
 
         /* 공통 객체 준비 */
         Scanner scan = new Scanner(System.in);
-        Model model = Model.getModel();
 
         InsertDeleteMedicine insertDelete = new InsertDeleteMedicine();
         UpdateMedicineStock  updateMedicine = new UpdateMedicineStock();
@@ -45,19 +44,19 @@ public class Controller {
             switch (option) {
 
                 case 1: // 약 삽입
-                    insertDelete.insertMedicine(model);
+                    insertDelete.insertMedicine();
                     break;
 
                 case 2: // 약 삭제
-                    insertDelete.deleteMedicine(model);
+                    insertDelete.deleteMedicine();
                     break;
 
                 case 3: // 수량만 수정
-                    updateMedicine.updateMedicine(model);
+                    updateMedicine.updateMedicine();
                     break;
 
                 case 4: // 약 정보(이름·가격·수량) 수정
-                    editController.editMedicine(model);
+                    editController.editMedicine();
                     break;
 
                 case 5: // 약 조회
