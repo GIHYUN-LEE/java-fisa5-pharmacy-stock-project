@@ -3,17 +3,17 @@ package controller;
 import java.util.HashMap;
 
 import domain.Medicine;
-import model.InsertDeleteModel;
 import model.Model;
 import view.InsertDeleteView;
+import view.OutputView;
 
 public class InsertDeleteMedicine {
 	
-	public static void insertMedicine(Model model) {
-		Medicine medicine = InsertDeleteView.inputMedicineInfo();
+	public void insertMedicine(Model model) {
+		Medicine medicine = InsertDeleteView.inputInsertMedicineInfo();
 		try {
 			if(model.isExist(medicine.getName())) {
-				throw Exception("존재하는 약 입니다.");
+				throw new Exception("존재하는 약 입니다.");
 			} 
 			model.insertMedicine(medicine);
 			OutputView.printInsertSuccess(medicine);
@@ -27,8 +27,8 @@ public class InsertDeleteMedicine {
 	public static void deleteMedicine(Model model) {
 		String name = InsertDeleteView.inputDeleteMedicineName();
 		try {
-			if(!model.isExist(medicine.getName())) {
-				throw Exception("존재하지 않는 약 입니다.");
+			if(!model.isExist(name)) {
+				throw new Exception("존재하지 않는 약 입니다.");
 			} 
 			model.deleteMedicine(name);
 			OutputView.printDeleteSuccess(name);
