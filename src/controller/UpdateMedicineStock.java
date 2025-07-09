@@ -17,6 +17,7 @@ public class UpdateMedicineStock {
             if (!Model.isExist(name)) {
                 throw new IllegalArgumentException("약이 존재하지 않습니다.");
             }
+3
 
             HashMap<String, Medicine> list = Model.getMedicineList();
             Medicine med = list.get(name);

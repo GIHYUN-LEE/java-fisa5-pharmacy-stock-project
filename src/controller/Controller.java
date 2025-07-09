@@ -3,6 +3,7 @@ package controller;
 import java.util.HashMap;
 import domain.Medicine;
 import model.Model;
+import view.InputView;
 import view.SearchView;
 
 public class Controller {
@@ -21,7 +22,7 @@ public class Controller {
 	private final InsertDeleteMedicine insertDelete = new InsertDeleteMedicine();
 	private final UpdateMedicineStock updateMedicine = new UpdateMedicineStock();
 	private final EditMedicineInfo editController = new EditMedicineInfo();
-	private final SearchView search = new SearchView();
+	private final SearchMedicine searchMedicine=new SearchMedicine();
 
 	/*
 	 * --------------------------------- 프로그램 진입점 ---------------------------------
@@ -32,6 +33,7 @@ public class Controller {
 		case 1: // 약 삽입
 			insertDelete.insertMedicine();
 			break;
+
 
 		case 2: // 약 삭제
 			insertDelete.deleteMedicine();
@@ -46,8 +48,8 @@ public class Controller {
 			break;
 
 		case 5: // 약 조회
-			search.showMedicine();
-			break;
+            searchMedicine.searchMedicine();
+            break;
 
 		case 0: // 종료
 			System.out.println("프로그램 종료합니다");
@@ -58,5 +60,5 @@ public class Controller {
 		}
 
 		return true;
-	}
+    }
 }
