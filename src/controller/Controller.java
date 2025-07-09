@@ -33,7 +33,7 @@ public class Controller {
         InsertDeleteMedicine insertDelete = new InsertDeleteMedicine();
         UpdateMedicineStock  updateMedicine = new UpdateMedicineStock();
         EditMedicineInfo     editController = new EditMedicineInfo();
-        SearchView           search = new SearchView();
+        SearchMedicine searchMedicine=new SearchMedicine();
 
         /* 메인 루프 */
         while (true) {
@@ -60,7 +60,8 @@ public class Controller {
                     break;
 
                 case 5: // 약 조회
-                    search.showMedicine();
+                    String name=InputView.inputMedicineName();
+                    searchMedicine.searchMedicine(name);
                     break;
 
                 case 0: // 종료

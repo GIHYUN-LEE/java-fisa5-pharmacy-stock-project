@@ -1,22 +1,20 @@
 package controller;
+
+import java.util.HashMap;
 import domain.Medicine;
-import view.InputView;
+import model.Model;
+import view.SearchView;
 
 public class SearchMedicine {
-	Controller control=new Controller();
-	
-	public void searchMedicine() {
-		Controller control = new Controller();
-		String name=InputView.inputMedicineName();
-		if(control.getMedicineList().containsKey(name)){
-				Medicine m = control.getMedicineList().get(name); 
-					System.out.println("약 이름 : " + m.getName() + "  |  " + "약 가격 : " + m.getPrice() + "  |  "+ "약 재고 수량 : " + m.getAmount());
-			}
-		else {
-			System.out.println("리스트에 없는 약 이름 입니다.");
+
+	public void searchMedicine(String name) {
+		HashMap<String, Medicine> list = Model.getMedicineList();
+
+		if (list.containsKey(name)) {
+			SearchView.showMedicine(list.get(name));
+		} else {
+			SearchView.showMedicine(null);
 		}
 	}
 
 }
-
-
