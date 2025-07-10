@@ -5,13 +5,26 @@ import java.util.Scanner;
 import controller.Controller;
 
 public class StartView {
+	
+	private static void view() {
+	    System.out.println("╭ ◜◝ ͡ ◜◝ ͡  ◜◝ ͡ ◜◝ ͡  ◜◝ ╮");
+	    System.out.println("        💊  M Y          ");
+	    System.out.println("    P H A R M A C Y  🏥   ");
+	    System.out.println("╰ ◟◞ ͜  ◟ ͜   ◟◞ ͜  ◟ ͜ ◟◞ ╯");
+	    System.out.println("                      O");
+	    System.out.println("                    °");
+		
+	}
+	
 
 	public static void main(String[] args) {
 
 		Scanner scan = new Scanner(System.in);
 		Controller controller = new Controller();
-
+		view();
+		
 		while (true) {
+			
 			System.out.println("===== 창고형 약국 시스템 =====");
 			System.out.println("1. 약 삽입");
 			System.out.println("2. 약 삭제");
