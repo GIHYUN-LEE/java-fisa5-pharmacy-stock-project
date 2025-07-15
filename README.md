@@ -238,3 +238,19 @@ CREATE TABLE User (
 > 
 > MySQL이 가볍고 빠르며 적합한 선택이라 판단.
 >
+
+## 🛠️ Troubleshooting
+
+### 1. `java.lang.StackOverflowError` 발생
+
+- **문제:** `SearchMedicine` 클래스가 내부에서 `Controller`를 생성하고, `Controller`가 다시 `SearchView`를 생성하면서 **순환 참조**가 발생함
+- **해결:** `SearchMedicine`이 `Controller`를 직접 참조하지 않고, `Model`을 통해 데이터를 가져오도록 수정하여 순환 구조 제거
+
+---
+
+### 2. `Search` 기능 MVC 패턴 미준수
+
+- **문제:** `SearchView`가 `SearchMedicine`을 직접 생성해 호출하는 방식으로 MVC 흐름이 어긋남
+- **해결:** `Controller`가 `SearchView`의 `showMedicine()`만 호출하도록 변경하고,
+    
+    `SearchView` 내부에서 필요한 데이터는 `Model`을 직접 접근하도록 리팩토링
