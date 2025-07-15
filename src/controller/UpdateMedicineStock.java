@@ -3,7 +3,7 @@ package controller;
 import java.util.HashMap;
 
 import domain.Medicine;
-import model.Model;
+import model.Service;
 import view.InputView;
 import view.OutputView;
 
@@ -14,11 +14,11 @@ public class UpdateMedicineStock {
             String name = InputView.inputMedicineName();
             int quantity = InputView.inputMedicineAmount();
 
-            if (!Model.isExist(name)) {
+            if (!Service.isExist(name)) {
                 throw new IllegalArgumentException("약이 존재하지 않습니다.");
             }
 
-            HashMap<String, Medicine> list = Model.getMedicineList();
+            HashMap<String, Medicine> list = Service.getMedicineList();
             Medicine med = list.get(name);
             int newStock = med.getAmount() + quantity;
 
@@ -28,7 +28,7 @@ public class UpdateMedicineStock {
 
             med.setAmount(newStock);
             if(newStock==0) {
-            	Model.deleteMedicine(name);
+            	Service.deleteMedicine(name);
             	OutputView.printDeleteSuccess(name);
             	return;
             }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import domain.Medicine;
 import domain.User;
-import model.Model;
+import model.Service;
 import model.UserDAO;
 import view.InputView;
 import view.OutputView;

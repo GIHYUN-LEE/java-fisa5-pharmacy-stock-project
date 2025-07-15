@@ -1,7 +1,7 @@
 package controller;
 
 import domain.Medicine;
-import model.Model;
+import model.Service;
 import view.EditInfoView;
 import view.OutputView;
 
@@ -12,11 +12,11 @@ public class EditMedicineInfo {
         String targetName = EditInfoView.inputTargetMedicineName();
 
         try {
-            if (!Model.isExist(targetName)) {
+            if (!Service.isExist(targetName)) {
                 throw new Exception("존재하지 않는 약 입니다.\n이전 메뉴로 돌아갑니다.");
             }
             // 기존 Medicine 조회
-            Medicine oldMed = Model.getMedicineList().get(targetName);
+            Medicine oldMed = Service.getMedicineList().get(targetName);
             
             int newPriceInput  = EditInfoView.inputNewMedicinePrice();
             int newAmountInput = EditInfoView.inputNewMedicineAmount();
@@ -27,7 +27,7 @@ public class EditMedicineInfo {
                               (newAmountInput < 0) ? oldMed.getAmount() : newAmountInput;
 
             Medicine updatedMed = new Medicine(targetName, finalPrice, finalAmount);
-            Model.editMedicine(targetName, updatedMed);
+            Service.editMedicine(targetName, updatedMed);
             
             OutputView.printEditSuccess(updatedMed);
 

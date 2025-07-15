@@ -1,9 +1,9 @@
 package model;
 import java.util.HashMap;
 import domain.Medicine;
-public class Model {
+public class Service {
     
-    private Model() {}
+    private Service() {}
     
     public static HashMap<String, Medicine> getMedicineList() throws Exception {
         return MedicineDAO.getAllMedicines();

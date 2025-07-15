@@ -121,7 +121,7 @@ public class MedicineDAO {
 			all = new HashMap<>();	
 			
 			while(rs.next()) {
-				all.get(new Medicine(rs.getString("name"), rs.getInt("price"), rs.getInt("amount")));
+				all.put(rs.getString("name"), new Medicine(rs.getString("name"), rs.getInt("price"), rs.getInt("amount")));
 			}
 		} finally {
 			DBUtil.close(conn, stmt, rs);
