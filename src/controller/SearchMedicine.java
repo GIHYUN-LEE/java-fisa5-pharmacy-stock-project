@@ -8,7 +8,7 @@ import view.SearchView;
 
 public class SearchMedicine {
 
-	public void searchMedicine() {
+	public void searchMedicine() throws Exception {
 		HashMap<String, Medicine> list = Model.getMedicineList();
 		String name= InputView.inputMedicineName();
 
