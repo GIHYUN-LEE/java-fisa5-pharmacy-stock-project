@@ -43,26 +43,23 @@ public class MedicineDAO {
 		return false;
 	}
 	
-	public static boolean updateAmountMedicine(String medicineName, int newAmount) throws SQLException {
-		Connection conn = null;
-		PreparedStatement pstmt =null;
-		try  {
-			conn = DBUtil.getConnection();
-			pstmt = conn.prepareStatement("update medicine set amount=? where name=?");
-			
-			pstmt.setInt(1, newAmount);
-			pstmt.setString(2, medicineName);
-		
-			int result = pstmt.executeUpdate();
-			
-			if(result == 1) {
-				return true;
-			}
-		} finally {
-			DBUtil.close(conn, pstmt);
-		}
-		return false;
+	public static boolean updateAmountMedicine(String medicineName, int deltaAmount) throws SQLException {
+	    Connection conn = null;
+	    PreparedStatement pstmt = null;
+	    try {
+	        conn = DBUtil.getConnection();
+	        pstmt = conn.prepareStatement("update medicine set amount = amount + ? where name = ?");
+	        pstmt.setInt(1, deltaAmount);
+	        pstmt.setString(2, medicineName);
+
+	        int result = pstmt.executeUpdate();
+
+	        return result == 1;
+	    } finally {
+	        DBUtil.close(conn, pstmt);
+	    }
 	}
+
 	
 	public static boolean updatePriceMedicine(String medicineName, int newPrice) throws SQLException {
 		Connection conn = null;
@@ -121,7 +118,7 @@ public class MedicineDAO {
 			all = new HashMap<>();	
 			
 			while(rs.next()) {
-				all.get(new Medicine(rs.getString("name"), rs.getInt("price"), rs.getInt("amount")));
+				all.put(rs.getString("name"), new Medicine(rs.getString("name"), rs.getInt("price"), rs.getInt("amount")));
 			}
 		} finally {
 			DBUtil.close(conn, stmt, rs);
