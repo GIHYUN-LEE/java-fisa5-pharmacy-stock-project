@@ -3,8 +3,6 @@ import java.util.HashMap;
 import domain.Medicine;
 public class Model {
     
-    private static Model model = new Model();
-    
     private Model() {}
     
     public static HashMap<String, Medicine> getMedicineList() throws Exception {
@@ -31,10 +29,11 @@ public class Model {
     }
 
     // 약 삭제
-    public static void deleteMedicine(String name) {
-        HashMap<String, Medicine> medicineList = MedicineDAO.deleteMedicine(name);
-        
- 
+    public static void deleteMedicine(String name) throws Exception {
+        boolean success = MedicineDAO.deleteMedicine(name);
+        if (!success) {
+            throw new Exception("DB 삭제 실패");
+        }
     }
 
     // 약 정보 수정
