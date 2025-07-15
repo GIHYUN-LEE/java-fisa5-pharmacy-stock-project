@@ -10,13 +10,13 @@ import java.util.HashMap;
 import domain.Medicine;
 import util.DBUtil;
 
-public class PharmacyDAO {
+public class MedicineDAO {
 	
-	private static PharmacyDAO model = new PharmacyDAO();
+	private static MedicineDAO model = new MedicineDAO();
 	
-	private PharmacyDAO() {} 
+	private MedicineDAO() {} 
 	
-	public static PharmacyDAO getModel() {
+	public static MedicineDAO getModel() {
 		return model;
 	}
 	
@@ -88,9 +88,7 @@ public class PharmacyDAO {
 		return all;
 	}
 	
-	
 	public static Medicine getNameMedicine(String name) throws Exception {
-		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
@@ -99,8 +97,6 @@ public class PharmacyDAO {
 		Medicine med = null;	
 		try {
 			conn = DBUtil.getConnection();
-			
-			
 			pstmt = conn.prepareStatement("select * from medicine where name=?");
 			pstmt.setString(1, name);		
 			
@@ -115,7 +111,26 @@ public class PharmacyDAO {
 		return med;
 	}
 	
-
+	public static boolean deleteMedicine(String name) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt =null;
+		
+		try  {
+			conn = DBUtil.getConnection();
+			pstmt = conn.prepareStatement("delete from medicine where name = ?");
+			
+			pstmt.setString(1, name);
+			
+			int result = pstmt.executeUpdate();
+			
+			if(result == 1) {
+				return true;
+			}
+		} finally {
+			DBUtil.close(conn, pstmt);
+		}
+		return false;
+	}
 	
 	
 }
