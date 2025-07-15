@@ -85,6 +85,28 @@ public class MedicineDAO {
 		return false;
 	}
 	
+	public static boolean updatePriceAmountMedicine(String medicineName, int newPrice, int newAmount) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt =null;
+		try  {
+			conn = DBUtil.getConnection();
+			pstmt = conn.prepareStatement("update medicine set price=?, amount=? where name=?");
+			
+			pstmt.setInt(1, newPrice);
+			pstmt.setInt(2, newAmount);
+			pstmt.setString(3, medicineName);
+		
+			int result = pstmt.executeUpdate();
+			
+			if(result == 1) {
+				return true;
+			}
+		} finally {
+			DBUtil.close(conn, pstmt);
+		}
+		return false;
+	}
+	
 	
 	public HashMap<String,Medicine> getAllMedicines() throws Exception {
 		
