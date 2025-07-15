@@ -5,7 +5,9 @@ import java.util.Scanner;
 import controller.Controller;
 
 public class UserView {
-	public static void startUserView(Controller controller, Scanner scan) {
+	
+	public static void startUserView(Scanner scan) {
+		Controller controller = Controller.getController();
 	    while (true) {
 	        try {
 	            System.out.println("===== 창고형 약국 시스템 =====");
@@ -22,7 +24,9 @@ public class UserView {
 	            int option = scan.nextInt();
 	            scan.nextLine();
 
-	            if (!controller.userProcess(option)) break;
+	            if (!controller.userProcess(option)) {
+	            	break;
+	            }
 
 	        } catch (Exception e) {
 	            System.out.println("⚠️ 오류가 발생했습니다: " + e.getMessage());
@@ -30,4 +34,5 @@ public class UserView {
 	        }
 	    }
 	}
+	
 }

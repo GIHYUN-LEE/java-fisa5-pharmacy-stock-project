@@ -29,22 +29,22 @@ import java.util.Properties;
 
 // properties 피알로 key에서 value로 쏙쏙 뽑는 기능
 
-
 /*	DBUtil은 편집 불가능한 구조 권장
  * 
  */
 public class DBUtil {
 	// key로 value값 활용시에만 사용하는 API
 	private static Properties dbInfo = new Properties();
-	
-	private DBUtil() {}
-	
+
+	private DBUtil() {
+	}
+
 	static {
 		// 존재하는 파일로 부터 자바 코드로 read하는 API
 		try {
 			dbInfo.load(new FileInputStream("dbinfo.properties"));
 			Class.forName(dbInfo.getProperty("jdbc.driver"));
-		
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -52,19 +52,10 @@ public class DBUtil {
 	}
 
 	public static Connection getConnection() throws SQLException {
-		return DriverManager.getConnection(	dbInfo.getProperty("jdbc.url"),	
-											dbInfo.getProperty("jdbc.id"), 	
-											dbInfo.getProperty("jdbc.pw"));
+		return DriverManager.getConnection(dbInfo.getProperty("jdbc.url"), dbInfo.getProperty("jdbc.id"),
+				dbInfo.getProperty("jdbc.pw"));
 	}
-	
-	// 자원 반환 필수(query)
-	/* 예외처리는 내부에서 or 외부에서 처리가 가능함
-	 * 내부에서 처리 : 굳이 사용자에게 예외처리된 내용을 알려주지 않아도 됨
-	 * 		ex) 자원 반환 같은 내용의 예외처리는 사용자가 몰라도됨 
-	 * 외부에서 처리 : 사용자에게 예외 처리된 내용을 알려주어야함
-	 * 		ex) 사용자가 쿼리를 날렸을 때 문제가 생겼다면 어떤 문제인지 알수 있도록 예외 처리 해야함
-	 */
-	
+
 	public static void close(Connection conn, Statement stmt, ResultSet rs) {
 		try {
 			if (rs != null) {
@@ -87,11 +78,8 @@ public class DBUtil {
 		}
 
 	}
-	
-	
-	// 자원 반환 필수 (insert/ update / delete)
-	public static void close(Connection conn, Statement stmt) {
 
+	public static void close(Connection conn, Statement stmt) {
 		try {
 
 			if (stmt != null) {
@@ -109,15 +97,13 @@ public class DBUtil {
 		}
 
 	}
-	
-	
-	public static void main(String [] args) {
+
+	public static void main(String[] args) {
 		try {
 			System.out.println(getConnection());
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 }

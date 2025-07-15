@@ -42,24 +42,24 @@ public class UserDAO {
 	}
 
 	public static String getUserRole(String name) throws SQLException {
-	    Connection conn = null;
-	    PreparedStatement pstmt = null;
-	    ResultSet rs = null;
-	    String role = "";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String role = null;
 
-	    try {
-	        conn = DBUtil.getConnection();
-	        pstmt = conn.prepareStatement("select role from user WHERE name = ?");
-	        pstmt.setString(1, name);
+		try {
+			conn = DBUtil.getConnection();
+			pstmt = conn.prepareStatement("select role from user WHERE name = ?");
+			pstmt.setString(1, name);
 
-	        rs = pstmt.executeQuery();
-	        if (rs.next()) {
-	            role = rs.getString("role");
-	        }
-	    } finally {
-	        DBUtil.close(conn, pstmt, rs);
-	    }
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				role = rs.getString("role");
+			}
+		} finally {
+			DBUtil.close(conn, pstmt, rs);
+		}
 
-	    return role;
+		return role;
 	}
 }
