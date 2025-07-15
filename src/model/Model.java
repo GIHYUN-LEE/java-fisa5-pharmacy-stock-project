@@ -5,7 +5,7 @@ import domain.Medicine;
 
 public class Model {
     
-    private static Database db = new Database();
+    //private static Database db = new Database();
     private static Model model = new Model();
     
     private Model() {}
