@@ -34,9 +34,9 @@ public class StartView {
                 continue;
             }
 			if("admin".equals(role)) {
-				AdminView.startAdminView(controller);
+				AdminView.startAdminView(controller,scan);
 			} else if("user".equals(role)) {
-				UserView.startUserView(controller);
+				UserView.startUserView(controller,scan);
 			} else {
 			    System.out.println("🚫 알 수 없는 권한입니다: ");
 			}
