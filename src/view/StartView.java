@@ -26,7 +26,6 @@ public class StartView {
 			System.out.print("👉 사용자 이름을 입력해주세요: ");
 
 			String name = scan.nextLine();
-			scan.nextLine(); // 버퍼 클리어
 			
 			String role = Controller.getUserRole(name);
 			
