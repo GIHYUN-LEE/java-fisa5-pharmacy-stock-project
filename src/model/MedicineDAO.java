@@ -20,7 +20,6 @@ public class MedicineDAO {
 		return model;
 	}
 	
-	
 	public static boolean insertMedicine(Medicine med) throws SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt =null;
@@ -44,7 +43,7 @@ public class MedicineDAO {
 		return false;
 	}
 	
-	public static boolean updateMedicine(String medicineName, int newAmount) throws SQLException {
+	public static boolean updateAmountMedicine(String medicineName, int newAmount) throws SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt =null;
 		try  {
@@ -62,7 +61,27 @@ public class MedicineDAO {
 		} finally {
 			DBUtil.close(conn, pstmt);
 		}
+		return false;
+	}
+	
+	public static boolean updatePriceMedicine(String medicineName, int newPrice) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt =null;
+		try  {
+			conn = DBUtil.getConnection();
+			pstmt = conn.prepareStatement("update medicine set price=? where name=?");
+			
+			pstmt.setInt(1, newPrice);
+			pstmt.setString(2, medicineName);
 		
+			int result = pstmt.executeUpdate();
+			
+			if(result == 1) {
+				return true;
+			}
+		} finally {
+			DBUtil.close(conn, pstmt);
+		}
 		return false;
 	}
 	
@@ -114,7 +133,6 @@ public class MedicineDAO {
 	public static boolean deleteMedicine(String name) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt =null;
-		
 		try  {
 			conn = DBUtil.getConnection();
 			pstmt = conn.prepareStatement("delete from medicine where name = ?");
@@ -131,6 +149,5 @@ public class MedicineDAO {
 		}
 		return false;
 	}
-	
 	
 }

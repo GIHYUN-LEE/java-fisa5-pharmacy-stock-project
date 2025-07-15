@@ -25,17 +25,23 @@ public class Model {
 
     // 약 삽입
     public static void insertMedicine(Medicine medicine) throws Exception {
-        HashMap<String, Medicine> medicineList = model.getMedicineList();
         if (medicine.getPrice() <= 0 || medicine.getAmount() < 0) {
             throw new Exception("올바르지 않는 값입니다.");
         }
-        medicineList.put(medicine.getName(), medicine);
+
+        // DB에 반영
+        boolean success = MedicineDAO.insertMedicine(medicine);
+        if (!success) {
+            throw new Exception("DB 삽입 실패");
+        }
     }
 
     // 약 삭제
     public static void deleteMedicine(String name) {
         HashMap<String, Medicine> medicineList = model.getMedicineList();
         medicineList.remove(name);
+        
+      
     }
 
     // 약 정보 수정
