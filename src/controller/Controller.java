@@ -13,11 +13,6 @@ import view.SearchView;
 
 public class Controller {
 
-	/*
-	 * --------------------------------- 필드 및 헬퍼
-	 * 메서드---------------------------------
-	 */
-
 	private final InsertDeleteMedicine insertDelete = new InsertDeleteMedicine();
 	private final UpdateMedicineStock updateMedicine = new UpdateMedicineStock();
 	private final EditMedicineInfo editController = new EditMedicineInfo();
