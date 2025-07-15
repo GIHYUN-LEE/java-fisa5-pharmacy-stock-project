@@ -129,19 +129,28 @@
 └── UpdateMedicineStock.java
 
 📁 domain/
-└── Medicine.java
+├── Medicine.java
+└── User.java
 
 📁 model/
-├── Database.java
-└── Model.java
+├── MedicineDAO.java
+├── Service.java
+└── UserDAO.java
+
+📁 util/
+└── DBUtil.java
 
 📁 view/
+├── AdminView.java
 ├── EditInfoView.java
 ├── InputView.java
 ├── InsertDeleteView.java
 ├── OutputView.java
 ├── SearchView.java
-└── StartView.java
+├── StartView.java
+├── UpdateStockView.java
+└── UserView.java
+
 ```
 
 ---
@@ -183,7 +192,6 @@
 
 ## 📌 향후 개선 예정 기능
 
-- 💾 파일 입출력 (종료 후에도 데이터 저장)
 - 📊 약 개수 기준 정렬 및 검색 필터
 - 📈 재고 부족 알림 기능
 
@@ -191,11 +199,11 @@
 
 ### 💊 Medicine 테이블
 
-| 컬럼명 | 타입 | 제약 조건 |  |
-| --- | --- | --- | --- |
-| name | VARCHAR(50) | PRIMARY KEY |  |
-| price | INT | NOT NULL |  |
-| amount | INT | NOT NULL |  |
+| **컬럼명** | **타입** | **제약 조건** |  
+| --- | --- | --- | 
+| name | VARCHAR(50) | PRIMARY KEY |  
+| price | INT | NOT NULL |  
+| amount | INT | NOT NULL | 
 
 ```sql
 CREATE TABLE Medicine (
