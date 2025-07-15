@@ -186,3 +186,55 @@
 - 💾 파일 입출력 (종료 후에도 데이터 저장)
 - 📊 약 개수 기준 정렬 및 검색 필터
 - 📈 재고 부족 알림 기능
+
+## 🗄️ 데이터베이스 연동 (DB Schema)
+
+### 💊 Medicine 테이블
+
+| 컬럼명 | 타입 | 제약 조건 |  |
+| --- | --- | --- | --- |
+| name | VARCHAR(50) | PRIMARY KEY |  |
+| price | INT | NOT NULL |  |
+| amount | INT | NOT NULL |  |
+
+```sql
+CREATE TABLE Medicine (
+  name VARCHAR(50) PRIMARY KEY,
+  price INT NOT NULL,
+  amount INT NOT NULL
+);
+
+```
+
+---
+
+### 👤 User 테이블
+
+| 컬럼명 | 타입 | 제약 조건 |
+| --- | --- | --- |
+| id | INT | PRIMARY KEY, AUTO_INCREMENT |
+| name | VARCHAR(50) | NOT NULL |
+| role | VARCHAR(20) | NOT NULL, DEFAULT 'user' |
+
+```sql
+CREATE TABLE User (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  role VARCHAR(20) NOT NULL DEFAULT 'user'
+);
+```
+
+---
+
+## ⚙️ MySQL 선택 이유
+
+### 🚀 성능과 확장성 측면에서 소규모 시스템에 적합
+
+- MySQL은 **읽기 중심 애플리케이션** 및 **빠른 CRUD 연산**에 최적화
+- Oracle DB는 **대규모 트랜잭션 처리**와 **복잡한 쿼리, 분산 시스템**에 강점
+
+> 따라서 약국 재고 관리 시스템처럼 단순 삽입과 조회가 주를 이루는 서비스에는
+> 
+> 
+> MySQL이 가볍고 빠르며 적합한 선택이라 판단.
+>
