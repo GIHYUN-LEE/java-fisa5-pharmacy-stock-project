@@ -29,18 +29,11 @@ public class Model {
     }
 
     // 약 삭제
-<<<<<<< HEAD
     public static void deleteMedicine(String name) throws Exception {
         boolean success = MedicineDAO.deleteMedicine(name);
         if (!success) {
             throw new Exception("DB 삭제 실패");
         }
-=======
-    public static void deleteMedicine(String name) {
-        HashMap<String, Medicine> medicineList = MedicineDAO.deleteMedicine(name);
-        
- 
->>>>>>> 3ed033544e3e3f0a8b3cedcf4a691317ff65b64b
     }
 
     // 약 정보 수정
