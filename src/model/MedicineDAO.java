@@ -86,7 +86,7 @@ public class MedicineDAO {
 	}
 	
 	
-	public HashMap<String,Medicine> getAllMedicines() throws Exception {
+	public static HashMap<String,Medicine> getAllMedicines() throws Exception {
 		
 		Connection conn = null;
 		Statement stmt = null;
