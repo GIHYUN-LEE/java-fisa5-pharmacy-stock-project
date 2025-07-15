@@ -54,7 +54,9 @@ public class MedicineDAO {
 
 	        int result = pstmt.executeUpdate();
 
-	        return result == 1;
+	        if(result == 1) {
+				return true;
+			}
 	    } finally {
 	        DBUtil.close(conn, pstmt);
 	    }

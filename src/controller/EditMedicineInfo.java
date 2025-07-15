@@ -27,7 +27,7 @@ public class EditMedicineInfo {
                               (newAmountInput < 0) ? oldMed.getAmount() : newAmountInput;
 
             Medicine updatedMed = new Medicine(targetName, finalPrice, finalAmount);
-            Service.editMedicine(targetName, updatedMed);
+            Service.editMedicine(targetName, finalPrice, finalAmount);
             
             OutputView.printEditSuccess(updatedMed);
 

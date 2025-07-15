@@ -37,7 +37,7 @@ public class Service {
     }
 
     // 약 정보 수정
-    public static void editMedicine(String oldName, Medicine newMed) throws Exception {
+    public static void editMedicine(String oldName, int newPrice, int newAmount) throws Exception {
 
         // 존재 여부 확인
         if (!isExist(oldName)) {
@@ -45,8 +45,13 @@ public class Service {
         }
 
         // 이름 변경 시 중복 방지
-        if (!oldName.equals(newMed.getName()) && isExist(newMed.getName())) {
+        if (!oldName.equals(oldName) && isExist(oldName)) {
             throw new Exception("이미 존재하는 약 이름입니다.");
+        }
+        
+        boolean success = MedicineDAO.updatePriceAmountMedicine(oldName, newPrice, newAmount);
+        if (!success) {
+            throw new Exception("약 정보 수정 실패");
         }
 
     }
