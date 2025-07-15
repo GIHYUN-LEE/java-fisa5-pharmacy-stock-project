@@ -20,18 +20,18 @@ public class AdminView {
 
 	            if (!scan.hasNextInt()) {
 	                System.out.println("❗ 숫자를 입력해주세요.");
-	                scan.nextLine(); // 잘못된 입력(문자열) 소비
+	                scan.nextLine();
 	                continue;
 	            }
 
 	            int option = scan.nextInt();
-	            scan.nextLine(); // 버퍼 클리어
+	            scan.nextLine();
 
 	            if (!controller.adminProcess(option)) break;
 
 	        } catch (Exception e) {
 	            System.out.println("⚠️ 오류가 발생했습니다: " + e.getMessage());
-	            scan.nextLine(); // 남은 입력 정리
+	            scan.nextLine();
 	        }
 	    }
 	}

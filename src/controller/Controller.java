@@ -47,7 +47,6 @@ public class Controller {
 	            case 0: // 종료
 	                System.out.println("프로그램 종료합니다");
 	                System.exit(0);
-//	                return false;
 
 	            default:
 	                System.out.println("잘못된 선택입니다. 다시 선택해 주세요.");
@@ -71,7 +70,6 @@ public class Controller {
 			case 0: // 종료
 				System.out.println("프로그램 종료합니다");
 				System.exit(0);
-//				return false;
 
 			default:
 				System.out.println("잘못된 선택입니다. 다시 선택해 주세요.");
